@@ -1,0 +1,146 @@
+/*Обнуление*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+:focus,
+:active {
+  outline: none;
+}
+a:focus,
+a:active {
+  outline: none;
+}
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+input::-ms-clear {
+  display: none;
+}
+button {
+  cursor: pointer;
+}
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+a,
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+ul li {
+  list-style: none;
+}
+img {
+  vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+/*--------------------*/
+body {
+  padding: 0;
+  margin: 0;
+  background: #fbfbfd;
+  overflow-x: hidden;
+  max-width: 100vw;
+  font-family: "Rubik";
+  font-size: 25px;
+}
+
+#slider {
+  display: flex;
+  width: calc(100vw - 40px);
+  height: calc(100vh - 40px);
+  padding: 20px;
+  column-gap: 10px;
+  align-items: stretch;
+}
+
+.slide {
+  height: 100%;
+  border-radius: 12px;
+  width: 5%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: width 0.25s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide span {
+  font-size: 13px;
+  color: rgb(160, 160, 160);
+}
+
+.slide::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.slide.active {
+  width: 85%;
+}
+
+.slide.active .slide-text {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0px);
+}
+
+.slide-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out;
+  visibility: hidden;
+  transform: translateX(300px);
+}
