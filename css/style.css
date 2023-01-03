@@ -148,7 +148,10 @@ body {
   width: 85%;
 }
 
-.slide.active .slide-text {
+.slide.active1 .slide-text,
+.slide.active2 .slide-text,
+.slide.active3 .slide-text,
+.slide.active4 .slide-text {
   opacity: 1;
   visibility: visible;
   transform: translateX(0px);
@@ -162,7 +165,7 @@ body {
   font-weight: 700;
   color: #fff;
   opacity: 0;
-  transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out;
+  transition: opacity 1s ease-in-out, transform 0.3s ease-in-out;
   visibility: hidden;
   transform: translateX(300px);
 }
