@@ -1,30 +1,31 @@
 const CLIENT_ID = "NcMjHTa__4twlLaP28avVF_ki52TgJiv0-y9-1iZvXQ";
-const slider = document.getElementById("slider");
 
 let slides;
 let state = [];
 let currentSlide;
 
 const fetchPhotos = async () => {
-  try {
-    const url = `https://api.unsplash.com/photos/random?client_id=${CLIENT_ID}&count=7`;
-    const response = await fetch(url);
-    const data = await response.json();
+  for (i = 1; i < 5; i++) {
+    try {
+      const url = `https://api.unsplash.com/photos/random?client_id=${CLIENT_ID}&count=4`;
+      const response = await fetch(url);
+      const data = await response.json();
 
-    if (response.ok && data.length) {
-      state = data;
-      currentSlide = data[0].id;
-      setPhotos();
+      if (response.ok && data.length) {
+        state = data;
+        currentSlide = data[0].id;
+        setPhotos();
+      }
+    } catch (err) {
+      console.log(err);
     }
-  } catch (err) {
-    console.log(err);
   }
 };
 
 const renderItem = () => {
   return state
     .map(({ urls: { regular }, user: { name }, id }) => {
-      const isActive = currentSlide === id ? "active" : "";
+      const isActive = currentSlide === id ? `active${i}` : "";
       return `<div class="slide ${isActive}" data-id="${id}" style="background-image: url(${regular})">
                 <div class="slide-text">
                   <span>photo by</span>
@@ -37,15 +38,18 @@ const renderItem = () => {
 
 const handleClick = ({ currentTarget }) => {
   const { id } = currentTarget.dataset;
+  const parentId = currentTarget.parentNode.id[6];
 
   if (id === currentSlide) return;
 
-  slides.forEach((slide) => slide.classList.remove("active"));
-  currentTarget.classList.add("active");
+  slides.forEach((slide) => slide.classList.remove(`active${parentId}`));
+  currentTarget.classList.add(`active${parentId}`);
   currentSlide = id;
 };
 
 const setPhotos = () => {
+  let slider = document.getElementById(`slider${i}`);
+
   slider.innerHTML = renderItem();
   slides = document.querySelectorAll(".slide");
 
